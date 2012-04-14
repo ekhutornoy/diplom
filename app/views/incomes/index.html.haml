@@ -1,10 +1,10 @@
-%h1 Listing incomes
+%h1 Приходы
 
 %table
   %tr
-    %th Date
-    %th Department
-    %th Supplier
+    %th Дата
+    %th Подразделение
+    %th Поставщик
     %th
     %th
     %th
@@ -12,7 +12,7 @@
   - @incomes.each do |income|
     %tr
       %td= income.date
-      %td= income.department
+      %td= income.department.name
       %td= income.supplier
       %td= link_to 'Show', income
       %td= link_to 'Edit', edit_income_path(income)
@@ -20,4 +20,4 @@
 
 %br
 
-= link_to 'New Income', new_income_path
+= link_to 'Внести приход', new_income_path

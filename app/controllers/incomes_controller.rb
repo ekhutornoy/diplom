@@ -1,4 +1,9 @@
 class IncomesController < ApplicationController
+  before_filter :only => [:new, :edit] do
+    @departments = Department.all
+    @products = Product.all
+  end
+
   # GET /incomes
   # GET /incomes.json
   def index
@@ -25,6 +30,7 @@ class IncomesController < ApplicationController
   # GET /incomes/new.json
   def new
     @income = Income.new
+    @income.income_items.build
 
     respond_to do |format|
       format.html # new.html.erb

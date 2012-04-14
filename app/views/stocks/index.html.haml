@@ -1,2 +1,9 @@
-%h1 Stocks#index
-%p Find me in app/views/stocks/index.html.haml
+%h1 Остатки
+= paginate @stocks
+%table
+  %tr
+    %th Наименование
+    %th Склад
+    %th Остаток
+  = render @stocks
+= paginate @stocks
