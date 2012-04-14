@@ -1,7 +1,8 @@
 Diplom::Application.routes.draw do
+  root :to => 'stocks#index'
+  get 'stocks/index'
   resources :incomes
   resources :departments
-
   resources :products
 
   # The priority is based upon order of creation:
