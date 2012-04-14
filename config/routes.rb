@@ -1,6 +1,6 @@
 Diplom::Application.routes.draw do
   root :to => 'stocks#index'
-  get 'stocks/index'
+  resources :stocks, :only => [:index]
   resources :incomes
   resources :departments
   resources :products
