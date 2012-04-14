@@ -1,4 +1,5 @@
 Diplom::Application.routes.draw do
+  resources :incomes
   resources :departments
 
   resources :products
