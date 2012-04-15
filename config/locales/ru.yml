@@ -1,0 +1,7 @@
+ru:
+  activerecord:
+    attributes:
+      income:
+        date: Дата
+        department: Подразделение
+        supplier: Поставщик

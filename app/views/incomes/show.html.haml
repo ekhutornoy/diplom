@@ -1,14 +1,26 @@
+%h1 Приход
 %p#notice= notice
 
 %p
-  %b Date:
+  %b Дата:
   = @income.date
 %p
-  %b Department:
-  = @income.department
+  %b Подразделение:
+  = @income.department.name
 %p
-  %b Supplier:
+  %b Поставщик:
   = @income.supplier
+%p
+  %table
+    %tr
+      %th Наименование
+      %th Количество
+      %th Цена
+    - @income.income_items.each do |i|
+      %tr
+        %td= i.product.name
+        %td= i.amount
+        %td= i.price
 
 = link_to 'Edit', edit_income_path(@income)
 \|
