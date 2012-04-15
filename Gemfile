@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
-gem 'active_reload'
+gem 'russian'
 gem 'haml-rails'
 gem 'kaminari'
 group :development, :test do
