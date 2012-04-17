@@ -1,8 +1,16 @@
 class ProductsController < ApplicationController
+  before_filter :only => [:new, :edit, :index] do
+    @categories = Category.all
+  end
+
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product
+    if params[:category_id].present?
+      @products = @products.where(:category_id => params[:category_id])
+    end
+    @products = @products.all
 
     respond_to do |format|
       format.html # index.html.erb

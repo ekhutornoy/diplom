@@ -13,6 +13,9 @@
     = f.label :name
     = f.text_field :name
   .field
+    = f.label :category
+    = collection_select :product, :category_id, @categories, :id, :name
+  .field
     = f.label :description
     = f.text_area :description
   .actions

@@ -4,6 +4,7 @@ gem 'rails', '3.2.3'
 gem 'russian'
 gem 'haml-rails'
 gem 'kaminari'
+gem 'ancestry'
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl'
