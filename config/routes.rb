@@ -1,4 +1,6 @@
 Diplom::Application.routes.draw do
+  resources :sale_orders
+
   root :to => 'stocks#index'
   resources :stocks, :only => [:index]
   resources :incomes
