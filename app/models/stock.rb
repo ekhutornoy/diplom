@@ -9,6 +9,9 @@ class Stock < ActiveRecord::Base
       where(:product_id => product_id,
       'incomes.department_id' => department_id).
       sum(:amount)
+    current_amount -= SaleItem.
+      where(:product_id => product_id, :department_id => department_id).
+      sum(:amount)
     update_attributes! :amount => current_amount
   end
 end

@@ -1,6 +1,6 @@
 class Income < ActiveRecord::Base
   belongs_to :department
-  has_many :income_items
+  has_many :income_items, :dependent => :destroy
   accepts_nested_attributes_for :income_items
   attr_accessible :date, :supplier, :department_id, :income_items_attributes
 
