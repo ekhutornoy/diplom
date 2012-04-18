@@ -12,5 +12,20 @@
   .field
     = f.label :client
     = f.text_field :client
+  .field
+    - product_options = @products.map { |p| [p.name, p.id] }
+    - department_options = @departments.map { |p| [p.name, p.id] }
+    %table
+      %tr
+        %th Наименование
+        %th Подразделение
+        %th Количество
+        %th Цена
+      = f.fields_for :sale_items do |nf|
+        %tr
+          %td= nf.select :product_id, product_options, :include_blank => true
+          %td= nf.select :department_id, department_options, :include_blank => true
+          %td= nf.text_field :amount, :size => 5
+          %td= nf.text_field :price, :size => 10
   .actions
     = f.submit 'Save'

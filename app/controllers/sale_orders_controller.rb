@@ -1,4 +1,9 @@
 class SaleOrdersController < ApplicationController
+  before_filter :only => [:new, :edit] do
+    @departments = Department.all
+    @products = Product.all
+  end
+
   # GET /sale_orders
   # GET /sale_orders.json
   def index
@@ -25,6 +30,7 @@ class SaleOrdersController < ApplicationController
   # GET /sale_orders/new.json
   def new
     @sale_order = SaleOrder.new
+    @sale_order.sale_items.build
 
     respond_to do |format|
       format.html # new.html.erb
