@@ -1,4 +1,6 @@
 Diplom::Application.routes.draw do
+  devise_for :users
+
   resources :sale_orders
 
   root :to => 'stocks#index'
