@@ -1,8 +1,9 @@
 class Stock < ActiveRecord::Base
-  attr_accessible :amount, :department_id, :product_id
+  attr_accessible :amount, :department_id, :product_id, :company_id
 
   belongs_to :product
   belongs_to :department
+  belongs_to :company
 
   def update_amount
     current_amount = IncomeItem.joins(:income).

@@ -11,16 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120418203401) do
+ActiveRecord::Schema.define(:version => 20120418210417) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "ancestry"
+    t.integer  "company_id"
   end
 
   add_index "categories", ["ancestry"], :name => "index_categories_on_ancestry"
+  add_index "categories", ["company_id"], :name => "index_categories_on_company_id"
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -33,7 +35,10 @@ ActiveRecord::Schema.define(:version => 20120418203401) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "company_id"
   end
+
+  add_index "departments", ["company_id"], :name => "index_departments_on_company_id"
 
   create_table "income_items", :force => true do |t|
     t.integer  "income_id",  :null => false
@@ -42,8 +47,10 @@ ActiveRecord::Schema.define(:version => 20120418203401) do
     t.decimal  "price",      :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "company_id"
   end
 
+  add_index "income_items", ["company_id"], :name => "index_income_items_on_company_id"
   add_index "income_items", ["income_id"], :name => "index_income_items_on_income_id"
   add_index "income_items", ["product_id"], :name => "index_income_items_on_product_id"
 
@@ -53,8 +60,10 @@ ActiveRecord::Schema.define(:version => 20120418203401) do
     t.string   "supplier"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "company_id"
   end
 
+  add_index "incomes", ["company_id"], :name => "index_incomes_on_company_id"
   add_index "incomes", ["department_id"], :name => "index_incomes_on_department_id"
 
   create_table "products", :force => true do |t|
@@ -64,7 +73,10 @@ ActiveRecord::Schema.define(:version => 20120418203401) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "category_id"
+    t.integer  "company_id"
   end
+
+  add_index "products", ["company_id"], :name => "index_products_on_company_id"
 
   create_table "sale_items", :force => true do |t|
     t.integer  "sale_order_id"
@@ -75,8 +87,10 @@ ActiveRecord::Schema.define(:version => 20120418203401) do
     t.decimal  "sum"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "company_id"
   end
 
+  add_index "sale_items", ["company_id"], :name => "index_sale_items_on_company_id"
   add_index "sale_items", ["department_id"], :name => "index_sale_items_on_department_id"
   add_index "sale_items", ["product_id"], :name => "index_sale_items_on_product_id"
   add_index "sale_items", ["sale_order_id"], :name => "index_sale_items_on_sale_order_id"
@@ -86,7 +100,10 @@ ActiveRecord::Schema.define(:version => 20120418203401) do
     t.string   "client"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "company_id"
   end
+
+  add_index "sale_orders", ["company_id"], :name => "index_sale_orders_on_company_id"
 
   create_table "stocks", :force => true do |t|
     t.integer  "department_id"
@@ -94,7 +111,10 @@ ActiveRecord::Schema.define(:version => 20120418203401) do
     t.integer  "amount",        :default => 0, :null => false
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
+    t.integer  "company_id"
   end
+
+  add_index "stocks", ["company_id"], :name => "index_stocks_on_company_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false

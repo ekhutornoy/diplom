@@ -1,7 +1,8 @@
 class IncomeItem < ActiveRecord::Base
   belongs_to :income
   belongs_to :product
-  attr_accessible :amount, :price, :product_id
+  belongs_to :company
+  attr_accessible :amount, :price, :product_id, :company_id
 
   def update_stocks
     stock.update_amount
