@@ -7,7 +7,8 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    #menu
-      = render 'layouts/menu'
+    - if user_signed_in?
+      #menu
+        = render 'layouts/menu'
     #content
       = yield

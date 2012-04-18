@@ -5,3 +5,11 @@ ru:
         date: Дата
         department: Подразделение
         supplier: Поставщик
+      user:
+        email: Логин
+        password: Пароль
+        password_confirmation: Повторите пароль
+        remember_me: Запомнить меня
+      company:
+        name: Название
+        phone: Телефон

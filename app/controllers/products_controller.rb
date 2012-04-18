@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_filter :authenticate_user!
+
   before_filter :only => [:new, :edit, :index] do
     @categories = Category.all
   end

@@ -1,4 +1,6 @@
 class SaleOrdersController < ApplicationController
+  before_filter :authenticate_user!
+
   before_filter :only => [:new, :edit] do
     @departments = Department.all
     @products = Product.all
