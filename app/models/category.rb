@@ -3,4 +3,6 @@ class Category < ActiveRecord::Base
   has_many :products
   has_ancestry
   belongs_to :company
+
+  validates_presence_of :company
 end

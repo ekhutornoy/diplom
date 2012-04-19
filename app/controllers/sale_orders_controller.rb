@@ -2,14 +2,14 @@ class SaleOrdersController < ApplicationController
   before_filter :authenticate_user!
 
   before_filter :only => [:new, :edit] do
-    @departments = Department.all
-    @products = Product.all
+    @departments = current_company.departments.all
+    @products = current_company.products.all
   end
 
   # GET /sale_orders
   # GET /sale_orders.json
   def index
-    @sale_orders = SaleOrder.all
+    @sale_orders = current_company.sale_orders.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -20,7 +20,7 @@ class SaleOrdersController < ApplicationController
   # GET /sale_orders/1
   # GET /sale_orders/1.json
   def show
-    @sale_order = SaleOrder.find(params[:id])
+    @sale_order = current_company.sale_orders.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -42,13 +42,13 @@ class SaleOrdersController < ApplicationController
 
   # GET /sale_orders/1/edit
   def edit
-    @sale_order = SaleOrder.find(params[:id])
+    @sale_order = current_company.sale_orders.find(params[:id])
   end
 
   # POST /sale_orders
   # POST /sale_orders.json
   def create
-    @sale_order = SaleOrder.new(params[:sale_order])
+    @sale_order = current_user.sale_orders.new(params[:sale_order])
 
     respond_to do |format|
       if @sale_order.save
@@ -64,7 +64,7 @@ class SaleOrdersController < ApplicationController
   # PUT /sale_orders/1
   # PUT /sale_orders/1.json
   def update
-    @sale_order = SaleOrder.find(params[:id])
+    @sale_order = current_company.sale_orders.find(params[:id])
 
     respond_to do |format|
       if @sale_order.update_attributes(params[:sale_order])
@@ -80,7 +80,7 @@ class SaleOrdersController < ApplicationController
   # DELETE /sale_orders/1
   # DELETE /sale_orders/1.json
   def destroy
-    @sale_order = SaleOrder.find(params[:id])
+    @sale_order = current_company.sale_orders.find(params[:id])
     @sale_order.destroy
 
     respond_to do |format|

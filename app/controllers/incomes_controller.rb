@@ -2,14 +2,14 @@ class IncomesController < ApplicationController
   before_filter :authenticate_user!
 
   before_filter :only => [:new, :edit] do
-    @departments = Department.all
-    @products = Product.all
+    @departments = current_company.departments.all
+    @products = current_company.products.all
   end
 
   # GET /incomes
   # GET /incomes.json
   def index
-    @incomes = Income.all
+    @incomes = current_company.incomes.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -20,7 +20,7 @@ class IncomesController < ApplicationController
   # GET /incomes/1
   # GET /incomes/1.json
   def show
-    @income = Income.find(params[:id])
+    @income = current_company.incomes.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -42,13 +42,13 @@ class IncomesController < ApplicationController
 
   # GET /incomes/1/edit
   def edit
-    @income = Income.find(params[:id])
+    @income = current_company.incomes.find(params[:id])
   end
 
   # POST /incomes
   # POST /incomes.json
   def create
-    @income = Income.new(params[:income])
+    @income = current_user.incomes.new(params[:income])
 
     respond_to do |format|
       if @income.save
@@ -64,7 +64,7 @@ class IncomesController < ApplicationController
   # PUT /incomes/1
   # PUT /incomes/1.json
   def update
-    @income = Income.find(params[:id])
+    @income = current_company.incomes.find(params[:id])
 
     respond_to do |format|
       if @income.update_attributes(params[:income])
@@ -80,7 +80,7 @@ class IncomesController < ApplicationController
   # DELETE /incomes/1
   # DELETE /incomes/1.json
   def destroy
-    @income = Income.find(params[:id])
+    @income = current_company.incomes.find(params[:id])
     @income.destroy
 
     respond_to do |format|

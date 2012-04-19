@@ -2,13 +2,13 @@ class ProductsController < ApplicationController
   before_filter :authenticate_user!
 
   before_filter :only => [:new, :edit, :index] do
-    @categories = Category.all
+    @categories = current_company.categories.all
   end
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product
+    @products = current_company.products
     if params[:category_id].present?
       @products = @products.where(:category_id => params[:category_id])
     end
@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @product = Product.find(params[:id])
+    @product = current_company.products.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -44,13 +44,13 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    @product = Product.find(params[:id])
+    @product = current_company.products.find(params[:id])
   end
 
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(params[:product])
+    @product = current_company.products.new(params[:product])
 
     respond_to do |format|
       if @product.save
@@ -66,7 +66,7 @@ class ProductsController < ApplicationController
   # PUT /products/1
   # PUT /products/1.json
   def update
-    @product = Product.find(params[:id])
+    @product = current_company.products.find(params[:id])
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
@@ -82,7 +82,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    @product = Product.find(params[:id])
+    @product = current_company.products.find(params[:id])
     @product.destroy
 
     respond_to do |format|

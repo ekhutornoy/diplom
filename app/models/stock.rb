@@ -5,6 +5,8 @@ class Stock < ActiveRecord::Base
   belongs_to :department
   belongs_to :company
 
+  validates_presence_of :company
+
   def update_amount
     current_amount = IncomeItem.joins(:income).
       where(:product_id => product_id,

@@ -4,4 +4,6 @@ class Product < ActiveRecord::Base
   has_many :stocks, :dependent => :destroy
   belongs_to :category
   belongs_to :company
+
+  validates_presence_of :company
 end

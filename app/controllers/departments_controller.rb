@@ -4,7 +4,7 @@ class DepartmentsController < ApplicationController
   # GET /departments
   # GET /departments.json
   def index
-    @departments = Department.all
+    @departments = current_company.departments.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class DepartmentsController < ApplicationController
   # GET /departments/1
   # GET /departments/1.json
   def show
-    @department = Department.find(params[:id])
+    @department = current_company.departments.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,13 +36,13 @@ class DepartmentsController < ApplicationController
 
   # GET /departments/1/edit
   def edit
-    @department = Department.find(params[:id])
+    @department = current_company.departments.find(params[:id])
   end
 
   # POST /departments
   # POST /departments.json
   def create
-    @department = Department.new(params[:department])
+    @department = current_company.departments.new(params[:department])
 
     respond_to do |format|
       if @department.save
@@ -58,7 +58,7 @@ class DepartmentsController < ApplicationController
   # PUT /departments/1
   # PUT /departments/1.json
   def update
-    @department = Department.find(params[:id])
+    @department = current_company.departmnets.find(params[:id])
 
     respond_to do |format|
       if @department.update_attributes(params[:department])
@@ -74,7 +74,7 @@ class DepartmentsController < ApplicationController
   # DELETE /departments/1
   # DELETE /departments/1.json
   def destroy
-    @department = Department.find(params[:id])
+    @department = current_company.departments.find(params[:id])
     @department.destroy
 
     respond_to do |format|
