@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   belongs_to :company
   accepts_nested_attributes_for :company
+  has_many :incomes
+  has_many :sale_orders
 end
