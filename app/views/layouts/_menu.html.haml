@@ -1,9 +1,9 @@
-.item= link_to 'Остатки', stocks_path
-.item= link_to 'Приход', incomes_path
-.item= link_to 'Продажа', sale_orders_path
-.item= link_to 'Товары', products_path
-.item= link_to 'Склады', departments_path
-.item= link_to 'Сотрудники', company_users_path
+.item= link_to 'Остатки', stocks_path if can?(:read, Stock)
+.item= link_to 'Приход', incomes_path if can?(:read, Income)
+.item= link_to 'Продажа', sale_orders_path if can?(:read, SaleOrder)
+.item= link_to 'Товары', products_path if can?(:read, Product)
+.item= link_to 'Склады', departments_path if can?(:read, Department)
+.item= link_to 'Сотрудники', company_users_path if can?(:read, User)
 
 - if user_signed_in?
   = link_to 'выход', destroy_user_session_path, :method => :delete

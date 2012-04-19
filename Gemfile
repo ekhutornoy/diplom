@@ -6,6 +6,7 @@ gem 'haml-rails'
 gem 'kaminari'
 gem 'ancestry'
 gem 'devise'
+gem 'cancan'
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl'
