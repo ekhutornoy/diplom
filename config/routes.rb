@@ -8,6 +8,7 @@ Diplom::Application.routes.draw do
   resources :incomes
   resources :departments
   resources :products
+  resources :company_users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

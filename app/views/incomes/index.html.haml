@@ -5,6 +5,7 @@
     %th Дата
     %th Подразделение
     %th Поставщик
+    %th Сотрудник
     %th
     %th
     %th
@@ -14,6 +15,7 @@
       %td= income.date
       %td= income.department.name
       %td= income.supplier
+      %td= income.user.name
       %td= link_to 'Show', income
       %td= link_to 'Edit', edit_income_path(income)
       %td= link_to 'Destroy', income, :confirm => 'Are you sure?', :method => :delete

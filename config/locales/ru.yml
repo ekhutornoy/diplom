@@ -6,6 +6,7 @@ ru:
         department: Подразделение
         supplier: Поставщик
       user:
+        name: ФИО
         email: Логин
         password: Пароль
         password_confirmation: Повторите пароль
