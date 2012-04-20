@@ -3,7 +3,7 @@ class Income < ActiveRecord::Base
   has_many :income_items, :dependent => :destroy
   belongs_to :company
   belongs_to :user
-  accepts_nested_attributes_for :income_items
+  accepts_nested_attributes_for :income_items, :reject_if => proc { |attributes| attributes['product_id'].blank? || attributes['amount'].blank? }
   attr_accessible :date, :supplier, :department_id, :income_items_attributes, :company_id, :user_id
   validates_presence_of :user
   validates_presence_of :company

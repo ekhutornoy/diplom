@@ -1,9 +1,13 @@
-class IncomesController < ApplicationController
+class
+ IncomesController < ApplicationController
   before_filter :authenticate_user!
 
   before_filter :only => [:new, :edit] do
     @departments = current_company.departments.all
     @products = current_company.products.all
+    @product_options = @products.group_by(&:category).map { |c, g|
+      [c.try(:name), g.map { |p| [p.name, p.id] }]
+    }
   end
 
   # GET /incomes
