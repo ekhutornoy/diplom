@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120419182106) do
+ActiveRecord::Schema.define(:version => 20120419204550) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(:version => 20120419182106) do
     t.integer  "company_id"
     t.boolean  "admin",                  :default => false, :null => false
     t.string   "name"
+    t.integer  "permissions_mask"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

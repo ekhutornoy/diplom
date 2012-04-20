@@ -4,16 +4,18 @@
   %tr
     %th Name
     %th
-    %th
-    %th
+    - if can? :manage, Department
+      %th
+      %th
 
   - @departments.each do |department|
     %tr
       %td= department.name
       %td= link_to 'Show', department
-      %td= link_to 'Edit', edit_department_path(department)
-      %td= link_to 'Destroy', department, :confirm => 'Are you sure?', :method => :delete
+      - if can? :manage, Department
+        %td= link_to 'Edit', edit_department_path(department)
+        %td= link_to 'Destroy', department, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Department', new_department_path
+= link_to 'New Department', new_department_path if can?(:manage, Department)

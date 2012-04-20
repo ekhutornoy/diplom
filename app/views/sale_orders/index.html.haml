@@ -6,8 +6,9 @@
     %th Клиент
     %th Сотрудник
     %th
-    %th
-    %th
+    - if can?(:manage, SaleOrder)
+      %th
+      %th
 
   - @sale_orders.each do |sale_order|
     %tr
@@ -15,9 +16,10 @@
       %td= sale_order.client
       %td= sale_order.user.name
       %td= link_to 'Show', sale_order
-      %td= link_to 'Edit', edit_sale_order_path(sale_order)
-      %td= link_to 'Destroy', sale_order, :confirm => 'Are you sure?', :method => :delete
+      - if can?(:manage, SaleOrder)
+        %td= link_to 'Edit', edit_sale_order_path(sale_order)
+        %td= link_to 'Destroy', sale_order, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'Внести продажу', new_sale_order_path
+= link_to 'Внести продажу', new_sale_order_path if can?(:manage, SaleOrder)

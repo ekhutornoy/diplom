@@ -12,5 +12,12 @@
   .field
     = f.label :password_confirmation
     = f.password_field :password_confirmation
+  %fieldset.field
+    %legend Права доступа
+    - User::PERMISSIONS.each do |p, name|
+      = check_box_tag "user[permissions][]", p, @user.has_permission?(p)
+      = name
+      %br/
+    = hidden_field_tag "user[permissions][]", ""
   .actions
     = f.submit 'Сохранить'
