@@ -30,4 +30,4 @@
       %br/
       = f.password_field :password_confirmation
   %div= f.submit "Зарегистрироваться"
-= render "links"
+= link_to 'Вход', new_user_session_path

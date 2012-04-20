@@ -6,9 +6,20 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-  %body
-    - if user_signed_in?
-      #menu
-        = render 'layouts/menu'
-    #content
-      = yield
+  %body.bp.two-col
+    #container.container
+      - if user_signed_in?
+        #header
+          %h1= current_user.company.name
+          .fr
+            = current_user.name
+            = link_to 'выход', destroy_user_session_path, :method => :delete
+        #sidebar
+          = render 'layouts/menu'
+      - else
+        #header
+          %h1 Название сервиса
+        #sidebar
+
+      #content
+        = yield
