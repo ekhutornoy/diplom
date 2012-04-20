@@ -7,6 +7,8 @@ gem 'kaminari'
 gem 'ancestry'
 gem 'devise'
 gem 'cancan'
+gem 'yaml_db', :git => 'https://github.com/pcreux/yaml_db'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl'
