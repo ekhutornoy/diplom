@@ -14,3 +14,17 @@
 .product_select {
     width: 200px;
 }
+.fr {
+  float: right;
+  margin-right: 40px;
+}
+.cb {
+  clear: both;
+}
+.category {
+    width: 500px;
+}
+
+.nested_categories {
+    margin-left: 20px;
+}

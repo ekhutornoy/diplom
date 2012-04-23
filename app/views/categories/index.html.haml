@@ -1,18 +1,5 @@
 %h1 Категории товаров
 .fr= link_to 'Добавить категорию', new_category_path
 
-%table
-  %tr
-    %th Название
-    %th
-    %th
-    %th
-
-  - @categories.each do |category|
-    %tr
-      %td= category.name
-      %td= link_to 'Show', category
-      %td= link_to 'Edit', edit_category_path(category)
-      %td= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete
-
-%br
+.cb
+= category_tree(@categories)

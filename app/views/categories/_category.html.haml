@@ -1,0 +1,5 @@
+.category
+  .fr
+    = link_to 'Изменить', edit_category_path(category)
+    = link_to 'Удалить', category, :confirm => 'Вы уверены?', :method => :delete
+  = category.name

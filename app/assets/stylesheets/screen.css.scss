@@ -33,10 +33,6 @@ form.bp {
 
 // Page layout can be done using mixins applied to your semantic classes and IDs:
 $grey: #eee;
-.fr {
-  float: right;
-  margin-right: 40px;
-}
 body.two-col {
   #container {
     background-color: $grey;
