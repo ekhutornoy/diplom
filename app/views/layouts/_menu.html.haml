@@ -2,5 +2,6 @@
 .item= link_to 'Приход', incomes_path if can?(:read, Income)
 .item= link_to 'Продажа', sale_orders_path if can?(:read, SaleOrder)
 .item= link_to 'Товары', products_path if can?(:read, Product)
+.item= link_to 'Категории', categories_path if can?(:manage, Product)
 .item= link_to 'Склады', departments_path if can?(:read, Department)
 .item= link_to 'Сотрудники', company_users_path if can?(:read, User)
