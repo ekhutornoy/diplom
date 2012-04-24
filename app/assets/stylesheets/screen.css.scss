@@ -56,4 +56,16 @@ body.two-col {
     // With 24 cols, this is 16.
     $content-columns: ceil(5 * $blueprint-grid-columns / 6);
     // true means it's the last column in the row
-    @include column($content-columns, true); } }
+    @include column($content-columns, true);
+    #content_container {
+      @include container;
+      #content_table {
+	@include column(3 * $content-columns / 4, true);
+      }
+      #content_categories {
+	@include column($content-columns / 4, true);
+	padding-left: 20px;
+      }
+    }
+  }
+}

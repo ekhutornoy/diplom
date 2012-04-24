@@ -1,31 +1,8 @@
+.fr= link_to 'Добавить товар', new_product_path if can?(:manage, Product)
 %h1 Товары
-%ul.categories
-  = render 'categories'
 
-= paginate @products
-
-%table
-  %tr
-    %th Номер
-    %th Наименование
-    %th Описание
-    %th
-    - if can?(:manage, Product)
-      %th
-      %th
-
-  - @products.each do |product|
-    %tr
-      %td= product.num
-      %td= product.name
-      %td= product.description
-      %td= link_to 'Show', product
-      - if can?(:manage, Product)
-        %td= link_to 'Edit', edit_product_path(product)
-        %td= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete
-
-= paginate @products
-
-%br
-
-= link_to 'Добавить товар', new_product_path if can?(:manage, Product)
+#content_container
+  #content_table
+    = render 'table'
+  #content_categories
+    = products_category_tree(Category.arrange)

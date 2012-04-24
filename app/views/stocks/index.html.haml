@@ -1,10 +1,16 @@
 %h1 Остатки
-= paginate @stocks
-%table
-  %tr
-    %th Наименование
-    %th Номер
-    %th Склад
-    %th Остаток
-  = render @stocks
-= paginate @stocks
+
+
+#content_container
+  #content_table
+    = paginate @stocks
+    %table
+      %tr
+        %th Наименование
+        %th Номер
+        %th Склад
+        %th Остаток
+      = render @stocks
+    = paginate @stocks
+  #content_categories
+    = category_tree(Category.arrange)
