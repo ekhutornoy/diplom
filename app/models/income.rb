@@ -9,7 +9,7 @@ class Income < ActiveRecord::Base
   validates_presence_of :company
 
   before_validation :set_company, :on => :create
-  before_save :set_department
+  before_validation :set_department
 
   protected
 
@@ -20,9 +20,9 @@ class Income < ActiveRecord::Base
     end
   end
 
-  def update_stocks
+  def set_department
     income_items.each do |i|
-      i.department = update_stocks
+      i.department = department
     end
   end
 
