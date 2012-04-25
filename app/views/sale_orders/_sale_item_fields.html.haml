@@ -1,0 +1,5 @@
+= f.select :product_id, @product_options, { :include_blank => true }, :class => 'product_select'
+= f.select :department_id, @department_options, :include_blank => true
+= f.text_field :amount, :size => 5
+= f.text_field :price, :size => 10
+= f.link_to_remove '[-]'

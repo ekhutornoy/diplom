@@ -1,4 +1,4 @@
-= form_for @sale_order do |f|
+= nested_form_for @sale_order do |f|
   -if @sale_order.errors.any?
     #error_explanation
       %h2= "#{pluralize(@sale_order.errors.count, "error")} prohibited this sale_order from being saved:"
@@ -13,18 +13,18 @@
     = f.label :client
     = f.text_field :client
   .field
-    - department_options = @departments.map { |p| [p.name, p.id] }
-    %table
-      %tr
-        %th Наименование
-        %th Подразделение
-        %th Количество
-        %th Цена
-      = f.fields_for :sale_items do |nf|
-        %tr
-          %td= nf.select :product_id, @product_options, { :include_blank => true }, :class => 'product_select'
-          %td= nf.select :department_id, department_options, :include_blank => true
-          %td= nf.text_field :amount, :size => 5
-          %td= nf.text_field :price, :size => 10
+    .fields_header
+      %span
+        %b Наименование
+      %span
+        %b Подразделение
+      %span
+        %b Количество
+      %span
+        %b Цена
+    = f.fields_for :sale_items
+    = f.link_to_add 'Добавить позицию', :sale_items
+  %br
   .actions
-    = f.submit 'Save'
+    = f.submit 'Сохранить'
+    = link_to 'Отмена', sale_orders_path

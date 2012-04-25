@@ -1,6 +1,9 @@
 ru:
   activerecord:
     attributes:
+      sale_order:
+        date: Дата
+        client: Клиент
       income:
         date: Дата
         department: Подразделение

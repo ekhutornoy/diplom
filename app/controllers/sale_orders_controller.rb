@@ -7,6 +7,7 @@ class SaleOrdersController < ApplicationController
     @product_options = @products.group_by(&:category).map { |c, g|
       [c.try(:name), g.map { |p| [p.name, p.id] }]
     }
+    @department_options = @departments.map { |p| [p.name, p.id] }
   end
 
   # GET /sale_orders

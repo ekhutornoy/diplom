@@ -3,7 +3,7 @@ class SaleOrder < ActiveRecord::Base
   has_many :sale_items, :dependent => :destroy
   belongs_to :company
   belongs_to :user
-  accepts_nested_attributes_for :sale_items
+  accepts_nested_attributes_for :sale_items, :allow_destroy => true, :reject_if => proc { |attributes| attributes['product_id'].blank? || attributes['amount'].blank? || attributes['department_id'].blank? }
   validates_presence_of :user
   validates_presence_of :company
 
