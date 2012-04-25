@@ -1,4 +1,5 @@
 %h1 Приходы
+.fr= link_to 'Внести приход', new_income_path if can?(:manage, Income)
 
 %table
   %tr
@@ -20,7 +21,3 @@
       - if can?(:manage, @income)
         %td= link_to 'Edit', edit_income_path(income)
         %td= link_to 'Destroy', income, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'Внести приход', new_income_path if can?(:manage, Income)

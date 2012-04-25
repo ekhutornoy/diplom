@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/ryanb/nested_form.git
+  revision: 63dcbcc6c6dbe07b3761ae8cc0cd04cc2a45024a
+  specs:
+    nested_form (0.2.0)
+
+GIT
   remote: https://github.com/pcreux/yaml_db
   revision: 04a0802eb7a9d90041196ef47630215a99b59e2b
   specs:
@@ -172,6 +178,7 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   kaminari
+  nested_form!
   rails (= 3.2.3)
   rspec-rails
   russian
