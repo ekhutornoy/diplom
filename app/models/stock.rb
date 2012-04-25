@@ -8,11 +8,9 @@ class Stock < ActiveRecord::Base
   validates_presence_of :company
 
   def update_amount
-    current_amount = IncomeItem.joins(:income).
-      where(:product_id => product_id,
-      'incomes.department_id' => department_id).
-      sum(:amount)
-    current_amount -= SaleItem.
+    current_amount = IncomeItem.
+      where(:product_id => product_id, :department_id => department_id).
+      sum(:amount) - SaleItem.
       where(:product_id => product_id, :department_id => department_id).
       sum(:amount)
     update_attributes! :amount => current_amount

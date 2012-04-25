@@ -8,11 +8,6 @@ class SaleOrder < ActiveRecord::Base
   validates_presence_of :company
 
   before_validation :set_company, :on => :create
-  after_save :update_stocks
-
-  def update_stocks
-    sale_items.each &:update_stocks
-  end
 
   protected
 

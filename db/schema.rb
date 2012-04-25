@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120419204550) do
+ActiveRecord::Schema.define(:version => 20120425203916) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -41,13 +41,14 @@ ActiveRecord::Schema.define(:version => 20120419204550) do
   add_index "departments", ["company_id"], :name => "index_departments_on_company_id"
 
   create_table "income_items", :force => true do |t|
-    t.integer  "income_id",  :null => false
-    t.integer  "product_id", :null => false
-    t.integer  "amount",     :null => false
-    t.decimal  "price",      :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "income_id",     :null => false
+    t.integer  "product_id",    :null => false
+    t.integer  "amount",        :null => false
+    t.decimal  "price",         :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "company_id"
+    t.integer  "department_id"
   end
 
   add_index "income_items", ["company_id"], :name => "index_income_items_on_company_id"

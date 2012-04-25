@@ -7,6 +7,9 @@ class SaleItem < ActiveRecord::Base
 
   validates_presence_of :company
 
+  after_save :update_stocks
+  after_destroy :update_stocks
+
   def update_stocks
     stock.update_amount
   end
