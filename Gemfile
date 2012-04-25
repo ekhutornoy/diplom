@@ -9,7 +9,7 @@ gem 'devise'
 gem 'cancan'
 gem 'yaml_db', :git => 'https://github.com/pcreux/yaml_db'
 gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"
-
+gem 'mysql2'
 
 group :development, :test do
   gem 'rspec-rails'
