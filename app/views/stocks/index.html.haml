@@ -3,14 +3,14 @@
 
 #content_container
   #content_table
-    = paginate @stocks
-    %table
-      %tr
-        %th Наименование
-        %th Номер
-        %th Склад
-        %th Остаток
-      = render @stocks
-    = paginate @stocks
+    %table.data_table.display
+      %thead
+        %tr
+          %th Наименование
+          %th Номер
+          %th Склад
+          %th Остаток
+      %tbody
+        = render @stocks
   #content_categories
     = stocks_category_tree(Category.arrange)

@@ -1,23 +1,20 @@
-= paginate @products
-
-%table
-  %tr
-    %th Номер
-    %th Наименование
-    %th Описание
-    %th
-    - if can?(:manage, Product)
-      %th
-      %th
-
-  - @products.each do |product|
+%table.data_table.display
+  %thead
     %tr
-      %td= product.num
-      %td= product.name
-      %td= product.description
-      %td= link_to 'Show', product
+      %th Номер
+      %th Наименование
+      %th Описание
+      %th
       - if can?(:manage, Product)
-        %td= link_to 'Edit', edit_product_path(product)
-        %td= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete
-
-= paginate @products
+        %th
+        %th
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= product.num
+        %td= product.name
+        %td= product.description
+        %td= link_to 'Show', product
+        - if can?(:manage, Product)
+          %td= link_to 'Edit', edit_product_path(product)
+          %td= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete

@@ -7,6 +7,6 @@ class StocksController < ApplicationController
       @stocks = @stocks.joins(:product).
         where('products.category_id' => params[:category_id])
     end
-    @stocks = @stocks.page(params[:page])
+    @stocks = @stocks.all
   end
 end

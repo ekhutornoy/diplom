@@ -1,23 +1,24 @@
-%h1 Приходы
 .fr= link_to 'Внести приход', new_income_path if can?(:manage, Income)
+%h1 Приходы
 
-%table
-  %tr
-    %th Дата
-    %th Подразделение
-    %th Поставщик
-    %th Сотрудник
-    %th
-    %th
-    %th
-
-  - @incomes.each do |income|
+%table.data_table.display
+  %thead
     %tr
-      %td= income.date
-      %td= income.department.name
-      %td= income.supplier
-      %td= income.user.name
-      %td= link_to 'Show', income
-      - if can?(:manage, @income)
-        %td= link_to 'Edit', edit_income_path(income)
-        %td= link_to 'Destroy', income, :confirm => 'Are you sure?', :method => :delete
+      %th Дата
+      %th Подразделение
+      %th Поставщик
+      %th Сотрудник
+      %th
+      %th
+      %th
+  %tbody
+    - @incomes.each do |income|
+      %tr
+        %td= income.date
+        %td= income.department.name
+        %td= income.supplier
+        %td= income.user.name
+        %td= link_to 'Show', income
+        - if can?(:manage, @income)
+          %td= link_to 'Edit', edit_income_path(income)
+          %td= link_to 'Destroy', income, :confirm => 'Are you sure?', :method => :delete

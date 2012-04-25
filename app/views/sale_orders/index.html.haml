@@ -1,22 +1,23 @@
-%h1 Продажи
 .fr= link_to 'Внести продажу', new_sale_order_path if can?(:manage, SaleOrder)
+%h1 Продажи
 
-%table
-  %tr
-    %th Дата
-    %th Клиент
-    %th Сотрудник
-    %th
-    - if can?(:manage, SaleOrder)
-      %th
-      %th
-
-  - @sale_orders.each do |sale_order|
+%table.data_table.display
+  %thead
     %tr
-      %td= sale_order.date
-      %td= sale_order.client
-      %td= sale_order.user.name
-      %td= link_to 'Show', sale_order
+      %th Дата
+      %th Клиент
+      %th Сотрудник
+      %th
       - if can?(:manage, SaleOrder)
-        %td= link_to 'Edit', edit_sale_order_path(sale_order)
-        %td= link_to 'Destroy', sale_order, :confirm => 'Are you sure?', :method => :delete
+        %th
+        %th
+  %tbody
+    - @sale_orders.each do |sale_order|
+      %tr
+        %td= sale_order.date
+        %td= sale_order.client
+        %td= sale_order.user.name
+        %td= link_to 'Show', sale_order
+        - if can?(:manage, SaleOrder)
+          %td= link_to 'Edit', edit_sale_order_path(sale_order)
+          %td= link_to 'Destroy', sale_order, :confirm => 'Are you sure?', :method => :delete

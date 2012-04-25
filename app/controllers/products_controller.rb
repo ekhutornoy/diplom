@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
     if params[:category_id].present?
       @products = @products.where(:category_id => params[:category_id])
     end
-    @products = @products.page(params[:page])
+    @products = @products.all
 
     respond_to do |format|
       format.html # index.html.erb
