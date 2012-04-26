@@ -58,7 +58,7 @@ class DepartmentsController < ApplicationController
   # PUT /departments/1
   # PUT /departments/1.json
   def update
-    @department = current_company.departmnets.find(params[:id])
+    @department = current_company.departments.find(params[:id])
 
     respond_to do |format|
       if @department.update_attributes(params[:department])
