@@ -7,7 +7,7 @@ class SaleOrder < ActiveRecord::Base
   validates_presence_of :user
   validates_presence_of :company
 
-  before_validation :set_company, :on => :create
+  before_validation :set_company
 
   protected
 

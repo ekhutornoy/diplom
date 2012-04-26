@@ -1,25 +1,13 @@
+= link_to 'Изменить', edit_income_path(@income)
+= link_to 'Удалить', @income, :method => :delete, :confirm => 'Удалить?'
 
-%p
-  %b Дата:
-  = @income.date
-%p
-  %b Подразделение:
-  = @income.department.name
-%p
-  %b Поставщик:
-  = @income.supplier
-%p
-  %table
+%table
+  %tr
+    %th Наименование
+    %th Количество
+    %th Цена
+  - @income.income_items.each do |i|
     %tr
-      %th Наименование
-      %th Количество
-      %th Цена
-    - @income.income_items.each do |i|
-      %tr
-        %td= i.product.name
-        %td= i.amount
-        %td= i.price
-
-= link_to 'Edit', edit_income_path(@income)
-\|
-= link_to 'Back', incomes_path
+      %td= i.product.name
+      %td= i.amount
+      %td= i.price

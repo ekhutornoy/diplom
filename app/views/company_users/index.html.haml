@@ -1,17 +1,17 @@
+.fr= link_to 'Новый сотрудник', new_company_user_path
 %h1 Сотрудники
 
-%table
-  %tr
-    %th Логин
-    %th ФИО
-    %th
-
-  - @users.each do |user|
+%table.data_table.display
+  %thead
     %tr
-      %td= user.email
-      %td= user.name
-      %td= link_to 'Edit', edit_company_user_path(user)
+      %th Логин
+      %th ФИО
+      %th
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.email
+        %td= user.name
+        %td= link_to 'Изменить', edit_company_user_path(user)
 
 %br
-
-= link_to 'Новый сотрудник', new_company_user_path

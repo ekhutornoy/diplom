@@ -1,21 +1,19 @@
+.fr= link_to 'Добавить склад', new_department_path if can?(:manage, Department)
 %h1 Склады
 
-%table
-  %tr
-    %th Название
-    %th
-    - if can? :manage, Department
-      %th
-      %th
-
-  - @departments.each do |department|
+%table.data_table.display
+  %thead
     %tr
-      %td= department.name
-      %td= link_to 'Show', department
+      %th Название
       - if can? :manage, Department
-        %td= link_to 'Edit', edit_department_path(department)
-        %td= link_to 'Destroy', department, :confirm => 'Are you sure?', :method => :delete
+        %th
+        %th
+  %tbody
+    - @departments.each do |department|
+      %tr
+        %td= department.name
+        - if can? :manage, Department
+          %td= link_to 'Изменить', edit_department_path(department)
+          %td= link_to 'Удалить', department, :confirm => 'Удалить?', :method => :delete
 
 %br
-
-= link_to 'Добавить склад', new_department_path if can?(:manage, Department)

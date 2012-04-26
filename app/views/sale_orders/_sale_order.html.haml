@@ -1,0 +1,13 @@
+= link_to 'Изменить', edit_sale_order_path(@sale_order)
+= link_to 'Удалить', @sale_order, :method => :delete, :confirm => 'Удалить?'
+
+%table
+  %tr
+    %th Наименование
+    %th Количество
+    %th Цена
+  - @sale_order.sale_items.each do |i|
+    %tr
+      %td= i.product.name
+      %td= i.amount
+      %td= i.price

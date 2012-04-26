@@ -27,6 +27,7 @@ class SaleOrdersController < ApplicationController
     @sale_order = current_company.sale_orders.find(params[:id])
 
     respond_to do |format|
+      format.js
       format.html # show.html.erb
       format.json { render json: @sale_order }
     end
@@ -56,7 +57,7 @@ class SaleOrdersController < ApplicationController
 
     respond_to do |format|
       if @sale_order.save
-        format.html { redirect_to @sale_order, notice: 'Sale order was successfully created.' }
+        format.html { redirect_to sale_orders_path, notice: 'Sale order was successfully created.' }
         format.json { render json: @sale_order, status: :created, location: @sale_order }
       else
         format.html { render action: "new" }
@@ -72,7 +73,7 @@ class SaleOrdersController < ApplicationController
 
     respond_to do |format|
       if @sale_order.update_attributes(params[:sale_order])
-        format.html { redirect_to @sale_order, notice: 'Sale order was successfully updated.' }
+        format.html { redirect_to sale_orders_path, notice: 'Sale order was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
