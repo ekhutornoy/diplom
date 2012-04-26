@@ -15,3 +15,10 @@
 //= require jquery_nested_form
 //= require dataTables/jquery.dataTables
 //= require_tree .
+
+
+$('.data_table tbody tr').live('click', function () {
+    var url = $(this).attr('data-url');
+    $.get(url, function(data) {
+	}, 'script');
+});

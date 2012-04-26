@@ -11,7 +11,7 @@
  *= require_self
  *= require jquery.ui.core
  *= require jquery.ui.theme
- *= require dataTables/jquery.dataTables
+ *= require dataTables/src/demo_table_jui
  *= require_tree .
 */
 .product_select {
@@ -30,4 +30,48 @@
 
 .nested_categories {
     margin-left: 20px;
+}
+
+.data_table tbody tr:hover {
+    cursor: pointer;
+}
+
+.data_table tbody tr.even:hover, .data_table tbody tr.even td.highlighted {
+	background-color: #ECFFB3;
+}
+
+.data_table tbody tr.odd:hover, .data_table tbody tr.odd td.highlighted {
+	background-color: #ECFFB3;
+}
+
+.data_table tr.even:hover {
+	background-color: #ECFFB3;
+}
+
+.data_table tr.even:hover td.sorting_1 {
+	background-color: #DDFF75;
+}
+
+.data_table tr.even:hover td.sorting_2 {
+	background-color: #E7FF9E;
+}
+
+.data_table tr.even:hover td.sorting_3 {
+	background-color: #E2FF89;
+}
+
+.data_table tr.odd:hover {
+	background-color: #E6FF99;
+}
+
+.data_table tr.odd:hover td.sorting_1 {
+	background-color: #D6FF5C;
+}
+
+.data_table tr.odd:hover td.sorting_2 {
+	background-color: #E0FF84;
+}
+
+.data_table tr.odd:hover td.sorting_3 {
+	background-color: #DBFF70;
 }

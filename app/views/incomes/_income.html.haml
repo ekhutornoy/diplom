@@ -1,0 +1,25 @@
+
+%p
+  %b Дата:
+  = @income.date
+%p
+  %b Подразделение:
+  = @income.department.name
+%p
+  %b Поставщик:
+  = @income.supplier
+%p
+  %table
+    %tr
+      %th Наименование
+      %th Количество
+      %th Цена
+    - @income.income_items.each do |i|
+      %tr
+        %td= i.product.name
+        %td= i.amount
+        %td= i.price
+
+= link_to 'Edit', edit_income_path(@income)
+\|
+= link_to 'Back', incomes_path
