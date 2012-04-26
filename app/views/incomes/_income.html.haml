@@ -1,5 +1,6 @@
-= link_to 'Изменить', edit_income_path(@income)
-= link_to 'Удалить', @income, :method => :delete, :confirm => 'Удалить?'
+- if can?(:manage, @income)
+  = link_to 'Изменить', edit_income_path(@income)
+  = link_to 'Удалить', @income, :method => :delete, :confirm => 'Удалить?'
 
 %table
   %tr

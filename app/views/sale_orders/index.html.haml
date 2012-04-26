@@ -1,4 +1,4 @@
-.fr= link_to 'Внести продажу', new_sale_order_path if can?(:manage, SaleOrder)
+.fr= link_to 'Внести продажу', new_sale_order_path if can?(:create, SaleOrder)
 %h1 Продажи
 
 %table.data_table.display

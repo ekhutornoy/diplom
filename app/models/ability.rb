@@ -3,7 +3,8 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new # guest user (not logged in)
+    user ||= User.new
+
     if user.admin?
       # Если пользователь-админ, ему можно всё
       can :manage, :all
@@ -12,10 +13,20 @@ class Ability
       can :read, [Stock, Income, SaleOrder, Product]
 
       if user.has_permission?(:incomes)
+        can :create, Income
+        can :manage, Income, :user_id => user.id
+      end
+
+      if user.has_permission?(:company_incomes)
         can :manage, Income
       end
 
       if user.has_permission?(:sale_orders)
+        can :create, SaleOrder
+        can :manage, SaleOrder, :user_id => user.id
+      end
+
+      if user.has_permission?(:company_sale_orders)
         can :manage, SaleOrder
       end
 

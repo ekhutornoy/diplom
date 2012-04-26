@@ -1,5 +1,6 @@
-= link_to 'Изменить', edit_sale_order_path(@sale_order)
-= link_to 'Удалить', @sale_order, :method => :delete, :confirm => 'Удалить?'
+- if can?(:manage, @sale_order)
+  = link_to 'Изменить', edit_sale_order_path(@sale_order)
+  = link_to 'Удалить', @sale_order, :method => :delete, :confirm => 'Удалить?'
 
 %table
   %tr

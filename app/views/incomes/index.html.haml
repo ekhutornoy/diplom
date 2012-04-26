@@ -1,4 +1,4 @@
-.fr= link_to 'Внести приход', new_income_path if can?(:manage, Income)
+.fr= link_to 'Внести приход', new_income_path if can?(:create, Income)
 %h1 Приходы
 
 %table.data_table.display
