@@ -4,7 +4,6 @@
       %th Номер
       %th Наименование
       %th Описание
-      %th
       - if can?(:manage, Product)
         %th
         %th
@@ -14,7 +13,6 @@
         %td= product.num
         %td= product.name
         %td= product.description
-        %td= link_to 'Show', product
         - if can?(:manage, Product)
-          %td= link_to 'Edit', edit_product_path(product)
-          %td= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete
+          %td= link_to 'Изменить', edit_product_path(product)
+          %td= link_to 'Удалить', product, :confirm => 'Удалить?', :method => :delete

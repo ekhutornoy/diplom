@@ -1,8 +1,7 @@
-.fr= link_to 'Добавить товар', new_product_path if can?(:manage, Product)
 %h1 Товары
+.fr
+  = link_to 'Добавить товар', new_product_path if can?(:manage, Product)
+= select_tag 'category_id', category_options_tree(Category.arrange, params[:category_id].to_i), :prompt => '-- Все категории --', :onchange => 'document.location="?category_id=" + $(this).val()'
 
-#content_container
-  #content_table
-    = render 'table'
-  #content_categories
-    = products_category_tree(Category.arrange)
+
+= render 'table'

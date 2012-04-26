@@ -14,9 +14,10 @@
     = f.text_field :name
   .field
     = f.label :category
-    = collection_select :product, :category_id, @categories, :id, :name
+    = f.select :category_id, category_options_tree(Category.arrange, @product.category_id)
   .field
     = f.label :description
-    = f.text_area :description
+    = f.text_area :description, :rows => 2
   .actions
-    = f.submit 'Save'
+    = f.submit 'Сохранить'
+    = link_to 'Отмена', products_path
