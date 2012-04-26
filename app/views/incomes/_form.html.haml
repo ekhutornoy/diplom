@@ -1,4 +1,4 @@
-= nested_form_for @income, :class => 'bp' do |f|
+= nested_form_for @income, :html => { :class => 'bp' } do |f|
   -if @income.errors.any?
     #error_explanation
       %h2= "#{pluralize(@income.errors.count, "error")} prohibited this income from being saved:"
@@ -6,16 +6,19 @@
         - @income.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  %p
     = f.label :date
+    %br
     = f.date_select :date
-  .field
+  %p
     = f.label :department
+    %br
     = collection_select :income, :department_id, @departments, :id, :name
-  .field
+  %p
     = f.label :supplier
+    %br
     = f.text_field :supplier
-  .field
+  %p
     .fields_header
       %span
         %b Наименование

@@ -1,18 +1,22 @@
-= form_for @user, :url => url do |f|
+= form_for @user, :url => url, :html => { :class => 'bp' } do |f|
 
-  .field
+  %p
     = f.label :name
+    %br
     = f.text_field :name
-  .field
+  %p
     = f.label :email
+    %br
     = f.text_field :email
-  .field
+  %p
     = f.label :password
+    %br
     = f.password_field :password
-  .field
+  %p
     = f.label :password_confirmation
+    %br
     = f.password_field :password_confirmation
-  %fieldset.field
+  %fieldset
     %legend Права доступа
     - User::PERMISSIONS.each do |p, name|
       = check_box_tag "user[permissions][]", p, @user.has_permission?(p)

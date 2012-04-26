@@ -1,4 +1,4 @@
-= form_for @category do |f|
+= form_for @category, :html => { :class => 'bp' } do |f|
   -if @category.errors.any?
     #error_explanation
       %h2= "#{pluralize(@category.errors.count, "error")} prohibited this category from being saved:"
@@ -6,11 +6,13 @@
         - @category.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  %p
     = f.label :parent_id
+    %br
     = f.select :parent_id, category_options_tree(Category.arrange, @category.parent_id), :include_blank => true
-  .field
+  %p
     = f.label :name
+    %br
     = f.text_field :name
   .actions
     = f.submit 'Сохранить'

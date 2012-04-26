@@ -1,4 +1,4 @@
-= nested_form_for @sale_order do |f|
+= nested_form_for @sale_order, :html => { :class => 'bp'}  do |f|
   -if @sale_order.errors.any?
     #error_explanation
       %h2= "#{pluralize(@sale_order.errors.count, "error")} prohibited this sale_order from being saved:"
@@ -6,13 +6,15 @@
         - @sale_order.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  %p
     = f.label :date
+    %br
     = f.date_select :date
-  .field
+  %p
     = f.label :client
+    %br
     = f.text_field :client
-  .field
+  %p
     .fields_header
       %span
         %b Наименование

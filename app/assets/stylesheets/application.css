@@ -15,7 +15,7 @@
  *= require_tree .
 */
 .product_select {
-    width: 200px;
+    width: 500px;
 }
 .fr {
   float: right;
@@ -74,4 +74,8 @@
 
 .data_table tr.odd:hover td.sorting_3 {
 	background-color: #DBFF70;
+}
+
+form.bp .fields input[type=text] {
+    width: 50px;
 }
