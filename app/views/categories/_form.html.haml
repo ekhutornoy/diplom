@@ -8,7 +8,7 @@
 
   .field
     = f.label :parent_id
-    = f.select :parent_id, @categories.map {|c| [c.name, c.id]}, :include_blank => true
+    = f.select :parent_id, category_options_tree(Category.arrange, @category.parent_id), :include_blank => true
   .field
     = f.label :name
     = f.text_field :name

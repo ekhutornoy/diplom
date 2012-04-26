@@ -1,16 +1,12 @@
 %h1 Остатки
+= select_tag 'category_id', category_options_tree(Category.arrange, params[:category_id].to_i), :prompt => '-- Все категории --', :onchange => 'document.location="?category_id=" + $(this).val()'
 
-
-#content_container
-  #content_table
-    %table.data_table.display
-      %thead
-        %tr
-          %th Наименование
-          %th Номер
-          %th Склад
-          %th Остаток
-      %tbody
-        = render @stocks
-  #content_categories
-    = stocks_category_tree(Category.arrange)
+%table.data_table.display
+  %thead
+    %tr
+      %th Наименование
+      %th Номер
+      %th Склад
+      %th Остаток
+  %tbody
+    = render @stocks

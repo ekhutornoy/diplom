@@ -20,6 +20,8 @@ ru:
       category:
         parent_id: Родительская категория
         name: Название
+      department:
+        name: Название
       product:
         num: Номер
         name: Наименование
